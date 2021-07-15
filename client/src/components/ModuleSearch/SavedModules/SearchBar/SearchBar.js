@@ -9,8 +9,7 @@ import axios from 'axios';
 
 // sorry for the 0 swe principles upheld
 function processResponse(response) {
-  let parseResponse = response[0].replace(/'/g, '"');
-  let listOfPartnerUni = JSON.parse(parseResponse);
+  let listOfPartnerUni = response;
   let currUniversities = [];
   var nameOfPartnerUni, locationOfPartnerUni;
   for (var i = 0; i< listOfPartnerUni.length; i++) {
@@ -75,8 +74,9 @@ export default function SearchBar() {
       }
     }
 
-    axios.post("http://localhost:5000/getresults/fetch", objectToSendOver)
+    axios.post("http://localhost:8000/api/university-matched", objectToSendOver)
     .then(function (response) {
+      console.log(response.data)
       let newList = processResponse(response.data);
       dispatch(changeUniversities(newList));
     }).catch(function(error) {

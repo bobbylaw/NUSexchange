@@ -79,9 +79,9 @@ def rank_unis(mods, countries):
 # Function to rank unis based on input fields and export them to a json file
 def output(mods,countries):
     result = rank_unis(mods,countries)
-    # out_file = open("./output.json", "w")
-    # json.dump(result, out_file, indent = 2)
-    # out_file.close()
+    out_file = open("./output.json", "w")
+    json.dump(result, out_file)
+    out_file.close()
 
 # Uncomment to run code on test case
 output(mods, countries) 

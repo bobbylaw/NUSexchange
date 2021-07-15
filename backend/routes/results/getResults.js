@@ -8,7 +8,7 @@ router.post("/fetch", (req, res) => {
 
   let options = { 
         mode: 'text', 
-        pythonPath: 'C:/Python39/python.exe', 
+        pythonPath: 'C:/Users/user/AppData/Local/Programs/Python/Python39/python.exe', 
         args: [JSON.stringify(req.body.information)]
     }; 
     

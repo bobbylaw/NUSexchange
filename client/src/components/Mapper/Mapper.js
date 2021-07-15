@@ -64,8 +64,9 @@ const Mapper = () => {
     const calculateProbability = (nusModule, otherModule) => {
         setCurrView(Loading);
         setTimeout(3000);
-        axios.post("http://localhost:5000/getnlp/fetch", {"nusModule": nusModule, "otherModule" : otherModule})
+        axios.post("http://localhost:8000/api/nlp", {"nusModule": nusModule, "otherModule" : otherModule})
             .then(function (response) {
+                console.log(response)
                 let roundedData = Math.round(response.data[0] * 100) / 100;
                 console.log(response.data[0]);
                 console.log(roundedData);

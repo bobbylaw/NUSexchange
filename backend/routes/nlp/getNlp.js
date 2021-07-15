@@ -17,7 +17,7 @@ router.post("/fetch", (req, res) => {
 
         let options = { 
           mode: 'text', 
-          pythonPath: 'C:/Python39/python.exe', 
+          pythonPath: 'C:/Users/user/AppData/Local/Programs/Python/Python39/python.exe', 
           pythonOptions: ['-u'], // get print results in real-time 
           args: [response.data.description, req.body.otherModule]
         }; 
