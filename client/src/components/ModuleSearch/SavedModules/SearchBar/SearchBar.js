@@ -9,7 +9,12 @@ import axios from 'axios';
 
 // sorry for the 0 swe principles upheld
 function processResponse(response) {
-  let listOfPartnerUni = response;
+  var listOfPartnerUni= [];
+  for(var i in response) {
+    if (response[i]["Modules"].length > 0) {
+      listOfPartnerUni.push(i, response[i])
+    }
+  }
   let currUniversities = [];
   var nameOfPartnerUni, locationOfPartnerUni;
   for (var i = 0; i< listOfPartnerUni.length; i++) {
@@ -52,9 +57,10 @@ function processResponse(response) {
         }
       }
     }
+    if (nusModuleInfo.length > 0) { 
     currUniversities.push({"university": nameOfPartnerUni, location : locationOfPartnerUni, nusModuleInfo : nusModuleInfo});
+    }
   }
-
   return currUniversities;
 }
 
@@ -74,11 +80,11 @@ export default function SearchBar() {
       }
     }
 
-    axios.post("http://localhost:8000/api/university-matched", objectToSendOver)
+    axios.post("http://127.0.0.1:8000/api/university-matched", objectToSendOver)
     .then(function (response) {
-      console.log(response.data)
       let newList = processResponse(response.data);
       dispatch(changeUniversities(newList));
+      console.log(response)
     }).catch(function(error) {
       console.log(error);
     })
